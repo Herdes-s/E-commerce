@@ -1,0 +1,21 @@
+@import "../../styles/variables";
+
+.header {
+    font-family: $main-font;
+    height: 6.25rem;
+    padding: 1.5rem;
+    background: $primary-color;
+    display: flex;
+    align-items: center;
+    
+    .header_container {
+        width: min(1200px, 100%);
+        margin: auto;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    
+}
