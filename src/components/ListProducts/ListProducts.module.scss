@@ -1,2 +1,18 @@
 @import "../../styles/variables";
 
+.section_listProducts {
+  background: $bg-color;
+  font-family: $main-font;
+  padding: 1rem 1.5rem;
+
+  .container {
+    width: min(1200px, 100%);
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    align-items: stretch;
+    justify-items: center;
+  }
+}
