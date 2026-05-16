@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./ListProducts.module.scss";
 import ProductCard from "./ProductCard";
-import type { Product } from "../../@types/product";
+import type { Product } from "../../@types/Product";
 import { getProducts } from "../../services/api";
 
 function ListProducts() {
@@ -15,7 +15,7 @@ function ListProducts() {
     });
   }, []);
 
-  if (loading) return <p>Carregando produtos...</p>;
+  if (loading) return <p className={styles.load}>Carregando produtos...</p>;
 
   return (
     <section className={styles.section_listProducts}>

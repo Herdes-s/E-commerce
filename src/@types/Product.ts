@@ -1,12 +1,16 @@
 export interface Product {
-    id: string, 
-    image: string,
-    title: string,
-    price: number,
-    description: string,
-    category: string,
-    rating: {
-        rate: number,
-        count: number
-    }
+  id: number;
+  image: string;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+}
+
+export interface RouterState {
+  product: Product;
 }

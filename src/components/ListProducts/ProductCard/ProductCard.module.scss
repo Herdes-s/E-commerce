@@ -7,7 +7,7 @@
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 
   &:hover {
     transform: translateY(-5px);
@@ -28,6 +28,13 @@
     aspect-ratio: 1/1;
     object-fit: contain;
     margin-bottom: 1rem;
+
+    transition: all .3s ease;
+  }
+
+  &:hover .image {
+    transform: scale(1.1) rotate(1deg);
+  filter: brightness(0.8);
   }
 
   .title {
@@ -41,25 +48,24 @@
     color: $primary-color;
     margin-bottom: 1rem;
   }
-  
-  .verMais, .verMenos {
+
+  .verMais {
     padding: 1rem 1.5rem;
     background: none;
     border: none;
     display: block;
     margin-inline: auto;
     cursor: pointer;
-    
+
     text-align: center;
   }
-  
+
   .description {
-    
     margin-bottom: 1rem;
   }
-  
+
   .button {
-    background-color: $primary-color;
+    background-color: $buttom-color;
     color: white;
     text-align: center;
     padding: 0.8rem;
@@ -68,6 +74,19 @@
     margin-top: auto;
     font-weight: bold;
     margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    &:active {
+      transform: scale(0.98);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+      background-color: $buttom-active;
+    }
   }
 
   .rating {

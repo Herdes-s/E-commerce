@@ -1,27 +1,19 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
-
-interface ProductProps {
-  image: string;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-}
+import type { Product } from "../../../@types/Product";
 
 export const ProductCard = ({
   image,
   title,
   price,
-  description,
   category,
   rating,
-}: ProductProps) => {
-  const [show, setShow] = useState(false);
+}: Product) => {
+  const navigate = useNavigate();
+
+  function lowPass() {
+    navigate("/product");
+  }
 
   return (
     <div className={styles.card}>
@@ -29,19 +21,9 @@ export const ProductCard = ({
       <img className={styles.image} src={image} alt="item" />
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.price}>R$ {price.toFixed(2)}</p>
-      {!show && (
-        <button onClick={() => setShow(!show)} className={styles.verMais}>
-          Ver mais...
-        </button>
-      )}
-      {show && (
-        <div>
-          <p className={styles.description}>{description}</p>
-          <button onClick={() => setShow(!show)} className={styles.verMenos}>
-            Ver menos...
-          </button>
-        </div>
-      )}
+      <button onClick={lowPass} className={styles.verMais}>
+        Ver mais...
+      </button>
       <button className={styles.button}>Comprar</button>
       <div className={styles.rating}>
         <span>Quantia:{rating.count}</span>
