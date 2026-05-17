@@ -2,17 +2,12 @@ import { useNavigate } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
 import type { Product } from "../../../@types/Product";
 
-export const ProductCard = ({
-  image,
-  title,
-  price,
-  category,
-  rating,
-}: Product) => {
+export const ProductCard = (product: Product) => {
+  const { image, title, price, category, rating } = product;
   const navigate = useNavigate();
 
   function lowPass() {
-    navigate("/product");
+    navigate("/product", { state: { product } });
   }
 
   return (

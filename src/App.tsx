@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Outset from "./pages/Outset";
-import ProductScreen from "./pages/ProductScreen";
+import { ProductScreen } from "./pages/ProductScreen";
 
 function App() {
   return (

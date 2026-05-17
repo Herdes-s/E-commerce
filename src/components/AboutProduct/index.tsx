@@ -1,21 +1,44 @@
+import { useState } from "react";
+import type { Product } from "../../@types/Product";
 import styles from "./AboutProduct.module.scss";
 
-function AboutProduct() {
-    
+interface AboutProductProps {
+  product: Product;
+}
+
+function AboutProduct({ product }: AboutProductProps) {
+  const [expandido, setExpandido] = useState(false);
+
+  const limite = 150;
+
+  if (product.description.length <= limite) {
+    <p className={styles.description}>{product.description}</p>;
+  }
+
+  const textoExibido = expandido
+    ? product.description
+    : `${product.description.substring(0, limite)}...`;
+
   return (
     <section className={styles.section_aboutproduct}>
       <div className={styles.container}>
-        <img className={styles.image} src={image} alt="Produto" />
-        <h2 className={styles.title}>{title}</h2>
-        <span className={styles.price}>{price}</span>
-        <p className={styles.description}>{description}</p>
+        <img className={styles.image} src={product.image} alt={product.title} />
+        <h2 className={styles.title}>{product.title}</h2>
+        <span className={styles.price}>R$ {product.price}</span>
+        <p className={styles.description}>{textoExibido}</p>
+        <button
+          className={styles.ver}
+          onClick={() => setExpandido(!expandido)}
+        >
+          {expandido ? "Ler Menos" : "Ler Mais"}
+        </button>
         <div className={styles.ticket}>
           <p>Adicionar Cupom</p>
           <p>20% OFF</p>
         </div>
         <div className={styles.bottomBar}>
           <button>Comprar</button>
-          <button></button>
+          <button>Carrinho</button>
         </div>
       </div>
     </section>
