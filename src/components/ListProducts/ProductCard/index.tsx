@@ -11,14 +11,11 @@ export const ProductCard = (product: Product) => {
   }
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={lowPass}>
       <span className={styles.category}>{category}</span>
       <img className={styles.image} src={image} alt="item" />
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.price}>R$ {price.toFixed(2)}</p>
-      <button onClick={lowPass} className={styles.verMais}>
-        Ver mais...
-      </button>
       <button className={styles.button}>Comprar</button>
       <div className={styles.rating}>
         <span>Quantia:{rating.count}</span>

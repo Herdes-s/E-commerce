@@ -23,6 +23,7 @@ function ListProducts() {
         {products.map((item) => (
           <ProductCard
             key={item.id}
+            id={item.id}
             title={item.title}
             price={item.price}
             category={item.category}
