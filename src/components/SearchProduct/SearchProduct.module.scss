@@ -1,0 +1,35 @@
+@import "../../styles/variables";
+
+.bar {
+  max-width: 1200px;
+  margin: auto;
+  height: 6.25rem;
+  padding: 1.5rem;
+
+  .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .search {
+      display: block;
+      height: 50px;
+      width: min(90%, 400px);
+      border: 1px solid black;
+      border-radius: 0.5rem 0 0 0.5rem;
+      padding: 0 1rem;
+    }
+
+    .btn_search {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      padding: 0 1rem;
+      border: 1px solid black;
+      background: rgb(50, 118, 196);
+      color: white;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+  }
+}

@@ -4,9 +4,17 @@ import ProductCard from "./ProductCard";
 import type { Product } from "../../@types/Product";
 import { getProducts } from "../../services/api";
 
-function ListProducts() {
+interface ProductListProps {
+  query: string;
+}
+
+function ListProducts({ query }: ProductListProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(query.toLowerCase()),
+  );
 
   useEffect(() => {
     getProducts().then((data) => {
@@ -20,7 +28,7 @@ function ListProducts() {
   return (
     <section className={styles.section_listProducts}>
       <div className={styles.container}>
-        {products.map((item) => (
+        {filteredProducts.map((item) => (
           <ProductCard
             key={item.id}
             id={item.id}
