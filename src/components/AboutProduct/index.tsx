@@ -2,6 +2,8 @@ import { useState } from "react";
 import type { Product } from "../../@types/Product";
 import styles from "./AboutProduct.module.scss";
 import { useNavigate } from "react-router-dom";
+import { IoChevronBack } from "react-icons/io5";
+import { FaShoppingCart } from "react-icons/fa";
 
 interface AboutProductProps {
   product: Product;
@@ -24,7 +26,7 @@ function AboutProduct({ product }: AboutProductProps) {
   return (
     <section className={styles.section_aboutproduct}>
       <div className={styles.back}>
-        <button onClick={() => navigate("/")}>Voltar</button>
+        <button onClick={() => navigate("/")}><IoChevronBack/> Voltar</button>
       </div>
       <div className={styles.container}>
         <div className={styles.container_img}>
@@ -50,8 +52,8 @@ function AboutProduct({ product }: AboutProductProps) {
           </div>
         </div>
         <div className={styles.bottomBar}>
-          <button>Comprar</button>
-          <button>Carrinho</button>
+          <button className={styles.btn_buy}>Comprar</button>
+          <button className={styles.btn_cart}><FaShoppingCart/></button>
         </div>
       </div>
     </section>

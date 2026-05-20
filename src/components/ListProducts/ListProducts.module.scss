@@ -1,11 +1,5 @@
 @import "../../styles/variables";
 
-.load {
-  text-align: center;
-  margin-top: 4rem;
-  font-size: 2rem;
-}
-
 .section_listProducts {
   background: $bg-color;
   font-family: $main-font;
@@ -20,5 +14,54 @@
     gap: 1rem;
     align-items: stretch;
     justify-items: center;
+
+    .skeleton {
+      width: 100%; 
+      max-width: 350px; 
+      padding: 1rem;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      .skeleton_img,
+      .skeleton_title,
+      .skeleton_price {
+        background: linear-gradient(
+          90deg,
+          #e0e0e0 25%,
+          #f5f5f5 37%,
+          #e0e0e0 63%
+        );
+        background-size: 400% 100%;
+        animation: shimmer 1.4s ease infinite;
+        border-radius: 6px;
+        width: 100%; 
+      }
+
+      .skeleton_img {
+        height: 200px;
+      }
+
+      .skeleton_title {
+        height: 20px;
+        width: 80%; 
+      }
+
+      .skeleton_price {
+        height: 14px;
+        width: 40%; 
+      }
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
   }
 }

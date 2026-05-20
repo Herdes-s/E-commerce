@@ -23,23 +23,42 @@ function ListProducts({ query }: ProductListProps) {
     });
   }, []);
 
-  if (loading) return <p className={styles.load}>Carregando produtos...</p>;
+  if (loading)
+    return (
+      <section className={styles.section_listProducts}>
+        <div className={styles.container}>
+          {Array(6)
+            .fill(0)
+            .map((_, idx) => (
+              <div className={styles.skeleton} key={idx}>
+                <div className={styles.skeleton_img} />
+                <div className={styles.skeleton_title} />
+                <div className={styles.skeleton_price} />
+              </div>
+            ))}
+        </div>
+      </section>
+    );
 
   return (
     <section className={styles.section_listProducts}>
       <div className={styles.container}>
-        {filteredProducts.map((item) => (
-          <ProductCard
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            price={item.price}
-            category={item.category}
-            description={item.description}
-            rating={item.rating}
-            image={item.image}
-          />
-        ))}
+        {filteredProducts.length === 0 ? (
+          <p>Produto não encontrado</p>
+        ) : (
+          filteredProducts.map((item) => (
+            <ProductCard
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              price={item.price}
+              category={item.category}
+              description={item.description}
+              rating={item.rating}
+              image={item.image}
+            />
+          ))
+        )}
       </div>
     </section>
   );

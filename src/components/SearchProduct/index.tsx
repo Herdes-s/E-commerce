@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./SearchProduct.module.scss";
+import { IoSearch } from "react-icons/io5";
 
 interface SearchBarProps {
   onSearch: (searchTerm: string) => void;
@@ -29,7 +30,7 @@ function SearchProduct({ onSearch }: SearchBarProps) {
           placeholder="O que você está procurando?"
         />
         <button type="submit" className={styles.btn_search}>
-          P
+          <IoSearch />
         </button>
       </form>
     </section>
