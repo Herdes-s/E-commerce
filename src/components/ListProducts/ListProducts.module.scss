@@ -9,49 +9,79 @@
     width: min(1200px, 100%);
     margin: auto;
 
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-    align-items: stretch;
-    justify-items: center;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+      justify-items: center;
 
-    .skeleton {
-      width: 100%; 
-      max-width: 350px; 
-      padding: 1rem;
-      border: 1px solid #eee;
-      border-radius: 8px;
+      .skeleton {
+        width: 100%;
+        max-width: 350px;
+        padding: 1rem;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        .skeleton_img,
+        .skeleton_title,
+        .skeleton_price {
+          background: linear-gradient(
+            90deg,
+            #e0e0e0 25%,
+            #f5f5f5 37%,
+            #e0e0e0 63%
+          );
+          background-size: 400% 100%;
+          animation: shimmer 1.4s ease infinite;
+          border-radius: 6px;
+          width: 100%;
+        }
+
+        .skeleton_img {
+          height: 200px;
+        }
+
+        .skeleton_title {
+          height: 20px;
+          width: 80%;
+        }
+
+        .skeleton_price {
+          height: 14px;
+          width: 40%;
+        }
+      }
+    }
+
+    .flip_pages {
+      width: 100%;
       display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1rem;
 
-      .skeleton_img,
-      .skeleton_title,
-      .skeleton_price {
-        background: linear-gradient(
-          90deg,
-          #e0e0e0 25%,
-          #f5f5f5 37%,
-          #e0e0e0 63%
-        );
-        background-size: 400% 100%;
-        animation: shimmer 1.4s ease infinite;
-        border-radius: 6px;
-        width: 100%; 
-      }
+      .arrow_button {
+        margin-top: 1rem;
+        padding: 0.5rem;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
 
-      .skeleton_img {
-        height: 200px;
-      }
+        .arrow_left,
+        .arrow_right {
+          color: $primary-color;
+          cursor: pointer;
 
-      .skeleton_title {
-        height: 20px;
-        width: 80%; 
-      }
-
-      .skeleton_price {
-        height: 14px;
-        width: 40%; 
+          &:hover {
+            color: darken($primary-color, 10%);
+          }
+        }
       }
     }
   }
