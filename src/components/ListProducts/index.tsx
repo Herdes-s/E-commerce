@@ -11,10 +11,19 @@ interface ProductListProps {
 
 function ListProducts({ query }: ProductListProps) {
   const [products, setProducts] = useState<Product[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [prevCategory, setPrevCategory] = useState<string>("all");
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
   const limit = 5;
+
+  if (selectedCategory !== prevCategory) {
+    setPrevCategory(selectedCategory);
+    setPage(1);
+  }
+
+  const categories = ["all", ...new Set(products.map((p) => p.category))];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,13 +35,23 @@ function ListProducts({ query }: ProductListProps) {
     fetchData();
   }, []);
 
-  const filteredProducts = products.filter((product) =>
+  let filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(query.toLowerCase()),
   );
-  
-    const totalPages = Math.max(1, filteredProducts.length / limit);
-  
-    const currentPage = Math.min(page, totalPages);
+
+  if (selectedCategory !== "all") {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.category === selectedCategory,
+    );
+  }
+
+  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / limit));
+
+  if (page > totalPages) {
+    setPage(1);
+  }
+
+  const currentPage = Math.min(page, totalPages);
 
   const start = (currentPage - 1) * limit;
   const end = start + limit;
@@ -58,6 +77,18 @@ function ListProducts({ query }: ProductListProps) {
   return (
     <section className={styles.section_listProducts}>
       <div className={styles.container}>
+        <div>
+          {categories.map((category) => (
+            <button
+              key={category}
+              type="button"
+              className={`${styles.category_btn} ${selectedCategory === category ? styles.active : ""}`}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category === "all" ? "Todos" : category}
+            </button>
+          ))}
+        </div>
         <div className={styles.grid}>
           {currentProduct.length === 0 ? (
             <p>Produto não encontrado</p>
@@ -86,6 +117,11 @@ function ListProducts({ query }: ProductListProps) {
             >
               <FaArrowLeft className={styles.arrow_left} />
             </button>
+
+            <span className={styles.page_indicator}>
+              {currentPage} / {totalPages}
+            </span>
+
             <button
               type="button"
               className={styles.arrow_button}
