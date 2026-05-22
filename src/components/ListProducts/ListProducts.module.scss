@@ -9,6 +9,50 @@
     width: min(1200px, 100%);
     margin: auto;
 
+    .category {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      justify-content: center;
+      gap: 0.25rem;
+      margin-bottom: 1rem;
+      
+      @media(min-width: 768px) {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+
+      }
+
+      .category_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        border: 1px solid black;
+        background: rgb(50, 118, 196);
+        color: rgb(255, 255, 255);
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 0.5rem;
+        transition: all .3s ease;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+      
+      
+      .category_btn.active {
+        background: rgb(47, 70, 97);
+        transform: scale(0.95);
+
+        &:hover {
+          transform: scale(1);
+        }
+      }
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

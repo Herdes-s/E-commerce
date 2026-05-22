@@ -5,6 +5,10 @@
   margin: auto;
   height: 6.25rem;
   padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 
   .form {
     display: flex;
@@ -13,7 +17,7 @@
 
     .search {
       display: block;
-      height: 50px;
+      height: 3.125rem;
       width: min(90%, 400px);
       border: 1px solid black;
       border-radius: 0.5rem 0 0 0.5rem;
@@ -24,15 +28,28 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 50px;
+      height: 3.125rem;
       padding: 0 1rem;
       border: 1px solid black;
       background: rgb(50, 118, 196);
       color: rgb(255, 255, 255);
-      font-size: 24px;
+      font-size: 1.5rem;
       font-weight: bold;
       border-radius: 0 0.5rem 0.5rem 0;
+    }
+  }
 
+  .select {
+    select {
+      height: 3.125rem;
+      padding: 0 1rem;
+      border: 1px solid black;
+      background: rgb(50, 118, 196);
+      color: rgb(255, 255, 255);
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 0.5rem;
+      cursor: pointer;
       
     }
   }
