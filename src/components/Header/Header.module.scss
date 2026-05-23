@@ -1,21 +1,95 @@
 @import "../../styles/variables";
 
 .header {
-    font-family: $main-font;
-    height: 6.25rem;
-    padding: 1.5rem;
-    background: $primary-color;
+  font-family: $main-font;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgb(0, 54, 172), rgb(0, 34, 109));
+  display: flex;
+  align-items: center;
+
+  .header_container {
+    width: min(1200px, 100%);
+    margin: auto;
+
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    
-    .header_container {
-        width: min(1200px, 100%);
-        margin: auto;
+    gap: 1rem;
 
+    .row_two {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      
+      @media(min-width: 768px) {
+          flex-direction: row;
+        }
+        
+        .logo {
+            color: white;
+        }
+        
+        .form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: min(100%, 600px);
+            height: 2rem;
+            background: $white;
+
+        .search {
+          display: block;
+          width: 70%;
+          height: 100%;
+          border: none;
+          padding: 0 0.5rem;
+        }
+        
+        .select {
+          width: 20%;
+          height: 100%;
+          background: $white;
+          color: black;
+          font-size: 1rem;
+          cursor: pointer;
+          border: none;
+        }
+        
+        .btn_search {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 10%;
+          height: 100%;
+          font-size: 1.5rem;
+          background: $buttom-color;
+          color: rgb(255, 255, 255);
+          border: none;
+          transform: scale(0.92);
+          cursor: pointer;
+          transition: all .3s ease;
+
+          &:hover {
+              background: $buttom-active;
+              font-size: 1.8rem;
+          }
+        }
+      }
+
+      .cart {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
+        font-size: 1.5rem;
+        background: $white;
+        color: $primary-color;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+      }
     }
-
-    
+  }
 }

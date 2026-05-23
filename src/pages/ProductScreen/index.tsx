@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom";
 import AboutProduct from "../../components/AboutProduct";
-import Header from "../../components/Header";
 import type { Product } from "../../@types/Product";
 
 interface LocationState {
@@ -24,7 +23,6 @@ export const ProductScreen = () => {
 
   return (
     <>
-      <Header />
       <AboutProduct product={product} />
     </>
   );
