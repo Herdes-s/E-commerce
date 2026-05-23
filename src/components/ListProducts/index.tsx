@@ -4,6 +4,7 @@ import ProductCard from "./ProductCard";
 import type { Product } from "../../@types/Product";
 import { getProducts } from "../../services/api";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import ProductCarousel from "./ProductCarousel";
 
 interface ProductListProps {
   query: string;
@@ -72,6 +73,7 @@ function ListProducts({ query, selectQuery }: ProductListProps) {
 
   return (
     <section className={styles.section_listProducts}>
+      <ProductCarousel />
       <div className={styles.container}>
         <div className={styles.grid}>
           {currentProduct.length === 0 ? (
