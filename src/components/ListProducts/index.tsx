@@ -17,7 +17,7 @@ function ListProducts({ query, selectQuery }: ProductListProps) {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
-  const limit = 5;
+  const limit = 10;
 
   useEffect(() => {
     const fetchData = async () => {

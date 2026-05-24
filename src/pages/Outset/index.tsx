@@ -1,22 +1,17 @@
-import { useState } from "react";
 import Header from "../../components/Header";
 import ListProducts from "../../components/ListProducts";
+import { useSearchParams } from "react-router-dom";
 
 function Outset() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectQuery, setSelectQuery] = useState("all");
+  const [searchParams] = useSearchParams();
 
-  const handleSearch = (term: string) => {
-    setSearchQuery(term);
-  };
+  const searchQuery = searchParams.get("search") || "";
 
-  const handleSelect = (sec: string) => {
-    setSelectQuery(sec);
-  };
+  const selectQuery = searchParams.get("category") || "all";
 
   return (
     <>
-      <Header onSearch={handleSearch} onSelect={handleSelect} />
+      <Header  />
       <ListProducts query={searchQuery} selectQuery={selectQuery} />
     </>
   );

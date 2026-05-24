@@ -2,15 +2,22 @@ import styles from "./Header.module.scss";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 interface SearchBarProps {
-  onSearch: (searchTerm: string) => void;
-  onSelect: (selectSec: string) => void;
+  onSearch?: (searchTerm: string) => void;
+  onSelect?: (selectSec: string) => void;
 }
 
 function Header({ onSearch, onSelect }: SearchBarProps) {
-  const [inputValue, setInputValue] = useState("");
-  const [selectValue, setSelectValue] = useState("all");
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const queryParam = searchParams.get("search") || "";
+  const categoryParam = searchParams.get("category") || "all";
+
+  const [inputValue, setInputValue] = useState(queryParam);
+  const [selectValue, setSelectValue] = useState(categoryParam);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setInputValue(e.target.value);
@@ -19,19 +26,30 @@ function Header({ onSearch, onSelect }: SearchBarProps) {
   function handleOption(e: React.ChangeEvent<HTMLSelectElement>) {
     const newValue = e.target.value;
     setSelectValue(newValue);
-    onSelect(newValue);
+    if (onSelect) onSelect(newValue);
+
+    navigate(`/?search=${encodeURIComponent(inputValue)}&category=${newValue}`);
   }
 
   function searchName(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    onSearch(inputValue);
+    if (onSearch) onSearch(inputValue);
+
+    navigate(
+      `/?search=${encodeURIComponent(inputValue)}&category=${selectValue}`,
+    );
   }
   return (
     <header className={styles.header}>
       <div className={styles.header_container}>
         <div className={styles.row_two}>
-          <h1 className={styles.logo}>E-commerce</h1>
+          <h1
+            className={styles.logo}
+            onClick={() => navigate("/")}
+          >
+            E-commerce
+          </h1>
           <form className={styles.form} onSubmit={searchName}>
             <input
               className={styles.search}
