@@ -59,6 +59,16 @@
         font-size: 1.5rem;
       }
 
+      .star {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.25rem;
+        color: $primary-color;
+        margin-bottom: 1rem;
+
+      }
+
       .price {
         display: block;
         margin-bottom: 2rem;
