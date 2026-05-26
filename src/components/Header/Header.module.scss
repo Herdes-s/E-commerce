@@ -20,17 +20,18 @@
     .row_two {
       width: 100%;
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
-      
-      @media(min-width: 768px) {
-          flex-direction: row;
-        }
+     
         
         .logo {
             color: white;
+            display: none;
+
+            @media(min-width: 768px) {
+              display: block;
+            }
         }
         
         .form {

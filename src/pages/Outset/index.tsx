@@ -1,3 +1,4 @@
+import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import ListProducts from "../../components/ListProducts";
 import { useSearchParams } from "react-router-dom";
@@ -13,6 +14,7 @@ function Outset() {
     <>
       <Header  />
       <ListProducts query={searchQuery} selectQuery={selectQuery} />
+      <Footer />
     </>
   );
 }

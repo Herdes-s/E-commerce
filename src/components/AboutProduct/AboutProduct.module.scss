@@ -8,14 +8,14 @@
   .back {
     width: min(1200px, 100%);
     margin: auto;
-    
+
     button {
       font-size: 1rem;
       background: none;
       border: none;
       font-weight: bold;
       padding: 1.5rem;
-      transition: all .3s ease;
+      transition: all 0.3s ease;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -30,29 +30,37 @@
   .container {
     width: min(1200px, 100%);
     margin: auto;
+    background: $white;
+    padding: 1rem;
+    border-radius: 0.5rem;
 
     display: flex;
     flex-direction: column;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.308);
 
     @media (min-width: 768px) {
       flex-direction: row;
-      gap: 1rem;
+      gap: 2rem;
     }
 
     .container_img {
-      flex: 1;
+      flex: 1.5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-inline: auto;
+      margin-bottom: 1.5rem;
 
       .image {
-        max-width: 100%;
+        max-width: 80%;
         aspect-ratio: 1/1;
         object-fit: contain;
         background: rgb(255, 255, 255);
-        margin-bottom: 1.5rem;
       }
     }
 
     .container_information {
-      flex: 2;
+      flex: 1;
 
       .title {
         margin-bottom: 1rem;
@@ -66,7 +74,6 @@
         gap: 0.25rem;
         color: $primary-color;
         margin-bottom: 1rem;
-
       }
 
       .price {
@@ -112,22 +119,20 @@
     }
 
     .bottomBar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-
-      background: $primary-color;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 0.5rem;
+      padding: 1rem;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 1rem;
-
-      padding: 1.5rem 0 2rem 0;
+      flex: 1;
 
       button {
-        background-color: $white;
-        color: $primary-color;
+        width: 100%;
+        background-color: $buttom-color;
+        color: $white;
         text-align: center;
         padding: 0.8rem;
         border: none;
@@ -149,9 +154,12 @@
       }
 
       .btn_cart {
+        background-color: #c2c2c2;
+        color: $buttom-color;
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 0.5rem;
         font-size: 1rem;
       }
     }

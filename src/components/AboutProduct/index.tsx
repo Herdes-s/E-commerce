@@ -3,7 +3,12 @@ import type { Product } from "../../@types/Product";
 import styles from "./AboutProduct.module.scss";
 import { useNavigate } from "react-router-dom";
 import { IoChevronBack } from "react-icons/io5";
-import { FaRegStar, FaShoppingCart, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import {
+  FaRegStar,
+  FaShoppingCart,
+  FaStar,
+  FaStarHalfAlt,
+} from "react-icons/fa";
 
 interface AboutProductProps {
   product: Product;
@@ -49,11 +54,14 @@ function AboutProduct({ product }: AboutProductProps) {
                 return <FaStar key={index} />;
               }
 
-              if (product.rating.rate > numberStars - 1 && product.rating.rate < numberStars) {
+              if (
+                product.rating.rate > numberStars - 1 &&
+                product.rating.rate < numberStars
+              ) {
                 return <FaStarHalfAlt key={index} />;
               }
 
-              return <FaRegStar key={index}/>
+              return <FaRegStar key={index} />;
             })}
           </span>
           <span className={styles.price}>R$ {product.price}</span>
@@ -70,9 +78,9 @@ function AboutProduct({ product }: AboutProductProps) {
           </div>
         </div>
         <div className={styles.bottomBar}>
-          <button className={styles.btn_buy}>Comprar</button>
+          <button className={styles.btn_buy}>Comprar Agora</button>
           <button className={styles.btn_cart}>
-            <FaShoppingCart />
+            <FaShoppingCart /> Adicionar ao Carrinho
           </button>
         </div>
       </div>
