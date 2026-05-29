@@ -17,6 +17,8 @@ function ListProducts({ query, selectQuery }: ProductListProps) {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
+  const [currentCarouselIndex, setCurrentCarouselIndex] = useState<number>(0);
+
   const limit = 10;
 
   useEffect(() => {
@@ -51,6 +53,7 @@ function ListProducts({ query, selectQuery }: ProductListProps) {
   if (query !== prevFilters.query || selectQuery !== prevFilters.selectQuery) {
     setPrevFilters({ query, selectQuery });
     setPage(1);
+    setCurrentCarouselIndex(0);
   }
 
   let filteredProducts = products.filter((product) =>
@@ -71,9 +74,21 @@ function ListProducts({ query, selectQuery }: ProductListProps) {
   const end = start + limit;
   const currentProduct = filteredProducts.slice(start, end);
 
+  const activeCarouselProduct = filteredProducts[currentCarouselIndex] || filteredProducts[0];
+
   return (
     <section className={styles.section_listProducts}>
-      <ProductCarousel />
+      
+      {filteredProducts.length > 0 && activeCarouselProduct && (
+        <div className={styles.carousel_wrapper}>
+          <ProductCarousel 
+            product={activeCarouselProduct} 
+            currentIndex={currentCarouselIndex}
+            onIndexChange={setCurrentCarouselIndex}
+          />
+        </div>
+      )}
+
       <div className={styles.container}>
         <div className={styles.grid}>
           {currentProduct.length === 0 ? (

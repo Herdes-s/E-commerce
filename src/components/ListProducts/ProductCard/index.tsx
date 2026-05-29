@@ -6,12 +6,12 @@ export const ProductCard = (product: Product) => {
   const { image, title, price } = product;
   const navigate = useNavigate();
 
-  function lowPass() {
+  function handleNavigateToProduct() {
     navigate("/product", { state: { product } });
   }
 
   return (
-    <div className={styles.card} onClick={lowPass}>
+    <div className={styles.card} onClick={handleNavigateToProduct}>
       <img className={styles.image} src={image} alt="item" />
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.price}>R$ {price.toFixed(2)}</p>

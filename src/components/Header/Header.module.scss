@@ -3,7 +3,7 @@
 .header {
   font-family: $main-font;
   padding: 1.5rem;
-  background: linear-gradient(to top, rgb(0, 54, 172), rgb(0, 34, 109));
+  background: linear-gradient(to top, $secondary-color, $primary-color);
   display: flex;
   align-items: center;
 
@@ -67,7 +67,7 @@
           width: 10%;
           height: 100%;
           font-size: 1.5rem;
-          background: $buttom-color;
+          background: $button-color;
           color: rgb(255, 255, 255);
           border: none;
           transform: scale(0.92);
@@ -75,7 +75,7 @@
           transition: all .3s ease;
 
           &:hover {
-              background: $buttom-active;
+              background: $button-active;
               font-size: 1.8rem;
           }
         }

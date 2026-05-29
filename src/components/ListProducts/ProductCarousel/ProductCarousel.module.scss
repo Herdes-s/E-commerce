@@ -1,6 +1,7 @@
 @import "../../../styles/variables";
 
 .carrosel {
+  position: relative;
   width: min(1200px, 100%);
   margin: 1rem auto;
   padding: 1rem;
@@ -8,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to top, rgb(0, 54, 172), rgb(0, 34, 109));
+  background: linear-gradient(to top, $secondary-color, $primary-color);
   transition: all 0.3s ease;
   cursor: pointer;
 
@@ -21,5 +22,38 @@
 
   &:hover {
     filter: brightness(0.8);
+  }
+
+  .arrows {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    align-items: center;
+    gap: 1rem;
+
+    .arrow_left, .arrow_right {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background-color: $white;
+      border: none;
+      color: $primary-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      opacity: 0.6;
+
+      &:hover {
+        background-color: $primary-color;
+        color: $white;
+        border: 1px solid $white;
+        transform: scale(1.1);
+        opacity: 1;
+      }
+    }
   }
 }
