@@ -3,6 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useCart } from "../../hooks/CartContext";
 
 interface SearchBarProps {
   onSearch?: (searchTerm: string) => void;
@@ -15,6 +16,8 @@ function Header({ onSearch, onSelect }: SearchBarProps) {
 
   const queryParam = searchParams.get("search") || "";
   const categoryParam = searchParams.get("category") || "all";
+
+  const { totalItems } = useCart();
 
   const [inputValue, setInputValue] = useState(queryParam);
   const [selectValue, setSelectValue] = useState(categoryParam);
@@ -40,14 +43,12 @@ function Header({ onSearch, onSelect }: SearchBarProps) {
       `/?search=${encodeURIComponent(inputValue)}&category=${selectValue}`,
     );
   }
+
   return (
     <header className={styles.header}>
       <div className={styles.header_container}>
         <div className={styles.row_two}>
-          <h1
-            className={styles.logo}
-            onClick={() => navigate("/")}
-          >
+          <h1 className={styles.logo} onClick={() => navigate("/")}>
             E-commerce
           </h1>
           <form className={styles.form} onSubmit={searchName}>
@@ -76,8 +77,11 @@ function Header({ onSearch, onSelect }: SearchBarProps) {
               <IoSearch />
             </button>
           </form>
-          <div className={styles.cart}>
+          <div className={styles.cart} onClick={() => navigate("/cart")}>
             <FaShoppingCart />
+            {totalItems > 0 && (
+              <div className={styles.cart_count}>{totalItems}</div>
+            )}
           </div>
         </div>
       </div>

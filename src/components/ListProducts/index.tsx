@@ -90,6 +90,7 @@ function ListProducts({ query, selectQuery }: ProductListProps) {
       )}
 
       <div className={styles.container}>
+        <h2 className={styles.title}>Produtos</h2>
         <div className={styles.grid}>
           {currentProduct.length === 0 ? (
             <p>Produto não encontrado</p>

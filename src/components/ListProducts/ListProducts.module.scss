@@ -9,6 +9,13 @@
     width: min(1200px, 100%);
     margin: auto;
 
+    .title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 4rem;
+      margin-bottom: 1rem;
+    }
+
     .category_btn {
       display: flex;
       align-items: center;

@@ -11,6 +11,10 @@ export interface Product {
   };
 }
 
+export interface ItemCart extends Product {
+  quantity: number;
+}
+
 export interface RouterState {
   product: Product;
 }
