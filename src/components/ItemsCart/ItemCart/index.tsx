@@ -9,8 +9,7 @@ interface ItemCartProps {
 }
 
 export function ItemCart({ product }: ItemCartProps) {
-    const {addToCartWithQuantity, reduceToCartWithQuantity } =
-    useCart();
+  const { addToCartWithQuantity, reduceToCartWithQuantity } = useCart();
   const navigate = useNavigate();
 
   function handleNavigateToProduct() {
@@ -20,7 +19,11 @@ export function ItemCart({ product }: ItemCartProps) {
   return (
     <div className={styles.cart_item} onClick={handleNavigateToProduct}>
       <div className={styles.cart_item_info}>
-        <img src={product.image} alt={product.title} className={styles.cart_image} />
+        <img
+          src={product.image}
+          alt={product.title}
+          className={styles.cart_image}
+        />
         <div className={styles.cart_info}>
           <h2 className={styles.cart_title}>{product.title}</h2>
           <span className={styles.cart_price}>R$ {product.price}</span>
@@ -29,14 +32,20 @@ export function ItemCart({ product }: ItemCartProps) {
       <div className={styles.cart_buttons}>
         <button
           className={styles.cart_button}
-          onClick={() => addToCartWithQuantity(product, 1)}
+          onClick={(e) => {
+            e.stopPropagation();
+            addToCartWithQuantity(product, 1);
+          }}
         >
           +
         </button>
         <span className={styles.cart_quantity}>{product.quantity}</span>
         <button
           className={styles.cart_button}
-          onClick={() => reduceToCartWithQuantity(product, 1)}
+          onClick={(e) => {
+            e.stopPropagation();
+            reduceToCartWithQuantity(product, 1);
+          }}
         >
           -
         </button>
