@@ -130,7 +130,7 @@ function ListProducts({ query, selectQuery }: ProductListProps) {
               onClick={() => setPage((prev) => prev + 1)}
               disabled={currentPage === totalPages}
             >
-              <FaArrowRight className={styles.arrow_right} />
+              <FaArrowRight className={styles.arrow_right}/>
             </button>
           </div>
         )}

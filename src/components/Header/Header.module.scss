@@ -5,7 +5,7 @@
   top: 0;
   z-index: 1000;
   font-family: $main-font;
-  padding: 1.5rem;
+  padding: 0.5rem 1.5rem 1.5rem 1.5rem;
   background: linear-gradient(to top, $secondary-color, $primary-color);
   display: flex;
   align-items: center;
@@ -20,30 +20,73 @@
     align-items: center;
     gap: 1rem;
 
+    .row_one {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .social_media {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .seguir {
+          color: white;
+          font-size: 0.9rem;
+        }
+
+        .social_icon {
+          color: white;
+          font-size: 1.2rem;
+          transition: all 0.3s ease;
+          cursor: pointer;
+
+          &:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 2px $white);
+          }
+        }
+      }
+
+      .login {
+        background: transparent;
+        border: none;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
     .row_two {
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
-     
-        
-        .logo {
-            color: white;
-            display: none;
 
-            @media(min-width: 768px) {
-              display: block;
-            }
+      .logo {
+        color: white;
+        display: none;
+
+        @media (min-width: 768px) {
+          display: block;
         }
-        
-        .form {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: min(100%, 600px);
-            height: 2rem;
-            background: $white;
+      }
+
+      .form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: min(100%, 600px);
+        height: 2rem;
+        background: $white;
 
         .search {
           display: block;
@@ -52,7 +95,7 @@
           border: none;
           padding: 0 0.5rem;
         }
-        
+
         .select {
           width: 20%;
           height: 100%;
@@ -62,7 +105,7 @@
           cursor: pointer;
           border: none;
         }
-        
+
         .btn_search {
           display: flex;
           align-items: center;
@@ -75,11 +118,11 @@
           border: none;
           transform: scale(0.92);
           cursor: pointer;
-          transition: all .3s ease;
+          transition: all 0.3s ease;
 
           &:hover {
-              background: $button-active;
-              font-size: 1.8rem;
+            background: $button-active;
+            font-size: 1.8rem;
           }
         }
       }
@@ -95,7 +138,7 @@
         border-radius: 0.5rem;
         padding: 0.5rem;
         cursor: pointer;
-        transition: all .3s ease;
+        transition: all 0.3s ease;
 
         &:hover {
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
@@ -121,7 +164,6 @@
           justify-content: center;
           align-items: center;
           font-size: 0.75rem;
-
         }
       }
     }

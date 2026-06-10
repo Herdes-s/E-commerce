@@ -46,10 +46,14 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 1rem;
       align-items: stretch;
       justify-items: center;
+
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
 
       .skeleton {
         width: 100%;
@@ -93,6 +97,7 @@
     }
 
     .flip_pages {
+      margin-top: 1rem;
       width: 100%;
       display: flex;
       justify-content: flex-end;
@@ -100,7 +105,6 @@
       gap: 1rem;
 
       .arrow_button {
-        margin-top: 1rem;
         padding: 0.5rem;
         font-size: 1.5rem;
         display: flex;
@@ -112,10 +116,21 @@
         .arrow_right {
           color: $primary-color;
           cursor: pointer;
+          transition: all 0.3s ease;
 
           &:hover {
             color: darken($primary-color, 10%);
           }
+        }
+        &:disabled .arrow_left,
+        &:disabled .arrow_right {
+          color: gray;
+          cursor: not-allowed;
+        }
+
+        &:not(:disabled):hover .arrow_left,
+        &:not(:disabled):hover .arrow_right {
+          transform: scale(1.05);
         }
       }
     }

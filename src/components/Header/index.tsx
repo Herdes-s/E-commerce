@@ -1,5 +1,5 @@
 import styles from "./Header.module.scss";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaShoppingCart, FaTiktok } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -47,6 +47,24 @@ function Header({ onSearch, onSelect }: SearchBarProps) {
   return (
     <header className={styles.header}>
       <div className={styles.header_container}>
+        <div className={styles.row_one}>
+          <div className={styles.social_media}>
+            <p className={styles.seguir}>Siga-nos no</p>
+            <a href="https://www.instagram.com/mizum.dev/" target="_blank" rel="noopener noreferrer">
+              <FaInstagram className={styles.social_icon} />
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61590699144392" target="_blank" rel="noopener noreferrer">
+              <FaFacebook className={styles.social_icon} />
+            </a>
+            <a href="https://www.tiktok.com/@mizum.dev" target="_blank" rel="noopener noreferrer">
+              <FaTiktok className={styles.social_icon} />
+            </a>
+          </div>
+
+          <button className={styles.login} onClick={() => navigate("/login")}>
+            Cadastre-se / Entre
+          </button>
+        </div>
         <div className={styles.row_two}>
           <h1 className={styles.logo} onClick={() => navigate("/")}>
             E-commerce

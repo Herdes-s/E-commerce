@@ -36,7 +36,7 @@ function AboutProduct({ product }: AboutProductProps) {
   return (
     <section className={styles.section_aboutproduct}>
       <div className={styles.back}>
-        <button onClick={() => navigate("/")}>
+        <button onClick={() => navigate(-1)}>
           <IoChevronBack /> Voltar
         </button>
       </div>
