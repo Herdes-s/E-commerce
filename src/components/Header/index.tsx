@@ -1,9 +1,14 @@
 import styles from "./Header.module.scss";
-import { FaFacebook, FaInstagram, FaShoppingCart, FaTiktok } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaShoppingCart,
+  FaTiktok,
+} from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useCart } from "../../hooks/CartContext";
+import { useCartStore } from "../../stores/cartStore";
 
 interface SearchBarProps {
   onSearch?: (searchTerm: string) => void;
@@ -17,7 +22,11 @@ function Header({ onSearch, onSelect }: SearchBarProps) {
   const queryParam = searchParams.get("search") || "";
   const categoryParam = searchParams.get("category") || "all";
 
-  const { totalItems } = useCart();
+  const cartItems = useCartStore((state) => state.cartItems);
+  const totalItems = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
 
   const [inputValue, setInputValue] = useState(queryParam);
   const [selectValue, setSelectValue] = useState(categoryParam);
@@ -50,13 +59,25 @@ function Header({ onSearch, onSelect }: SearchBarProps) {
         <div className={styles.row_one}>
           <div className={styles.social_media}>
             <p className={styles.seguir}>Siga-nos no</p>
-            <a href="https://www.instagram.com/mizum.dev/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.instagram.com/mizum.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaInstagram className={styles.social_icon} />
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61590699144392" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.facebook.com/profile.php?id=61590699144392"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaFacebook className={styles.social_icon} />
             </a>
-            <a href="https://www.tiktok.com/@mizum.dev" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.tiktok.com/@mizum.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaTiktok className={styles.social_icon} />
             </a>
           </div>

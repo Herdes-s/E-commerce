@@ -1,12 +1,12 @@
 import styles from "./itemsCart.module.scss";
 
-import { useCart } from "../../hooks/CartContext";
 import { ItemCart } from "./ItemCart";
 import { IoChevronBack } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { useCartStore } from "../../stores/cartStore";
 
 function ItemsCart() {
-  const { cartItems } = useCart();
+  const cartItems = useCartStore((state) => state.cartItems);
   const navigate = useNavigate();
 
   return (

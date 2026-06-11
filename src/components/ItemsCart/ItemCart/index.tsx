@@ -2,14 +2,14 @@ import styles from "./ItemCart.module.scss";
 
 import { useNavigate } from "react-router-dom";
 import type { ItemCart } from "../../../@types/Product";
-import { useCart } from "../../../hooks/CartContext";
+import { useCartStore } from "../../../stores/cartStore";
 
 interface ItemCartProps {
   product: ItemCart;
 }
 
 export function ItemCart({ product }: ItemCartProps) {
-  const { addToCartWithQuantity, reduceToCartWithQuantity } = useCart();
+  const { addToCartWithQuantity, reduceToCartWithQuantity } = useCartStore();
   const navigate = useNavigate();
 
   function handleNavigateToProduct() {

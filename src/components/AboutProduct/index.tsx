@@ -9,7 +9,7 @@ import {
   FaStar,
   FaStarHalfAlt,
 } from "react-icons/fa";
-import { useCart } from "../../hooks/CartContext";
+import { useCartStore } from "../../stores/cartStore";
 
 interface AboutProductProps {
   product: Product;
@@ -19,9 +19,7 @@ function AboutProduct({ product }: AboutProductProps) {
   const navigate = useNavigate();
   const [expandido, setExpandido] = useState(false);
 
-  const {
-    addToCart,
-  } = useCart();
+  const addToCart = useCartStore((state) => state.addToCart);
 
   const limite = 100;
 
