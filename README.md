@@ -77,7 +77,7 @@ Solução: Como a barra de pesquisa precisava funcionar de forma dinâmica tanto
 ---
 
 ## 🔗 Link de Acesso
-Confira o projeto online: Visualizar E-commerce
+Confira o projeto online: [**Visualizar E-commerce**](https://e-commerce-gilt-psi-72.vercel.app/)
 
 ---
 
