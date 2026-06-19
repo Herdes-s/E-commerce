@@ -64,7 +64,7 @@ export const useCartStore = create<CartState>()(
       },
     }),
     {
-      name: "cartItems", // mesma chave que você já usa no localStorage
+      name: "cartItems", 
     },
   ),
 );

@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import styles from "./FormLog.module.scss";
+import styles from "./FormCreate.module.scss";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import {
   useState,
   type ChangeEvent,
-  type FormEvent,
   type Dispatch,
+  type FormEvent,
   type SetStateAction,
 } from "react";
 
@@ -14,14 +14,16 @@ type FormLogProps = {
   isLogin: boolean;
 };
 
-function FormLog({ setIsLogin, isLogin }: FormLogProps) {
+function FormCreate({ setIsLogin, isLogin }: FormLogProps) {
   const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
+  const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   function handleAccount(e: ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
+    if (name === "name") setName(value);
     if (name === "email") setEmail(value);
     if (name === "password") setPassword(value);
   }
@@ -41,6 +43,15 @@ function FormLog({ setIsLogin, isLogin }: FormLogProps) {
         <div className={styles.form_log_container}>
           <h2>Log-In</h2>
           <form onSubmit={handleSubmit}>
+            <input
+              className={styles.email_input}
+              type="text"
+              name="name"
+              onChange={handleAccount}
+              value={name}
+              placeholder="Nome"
+              required
+            />
             <input
               className={styles.email_input}
               type="email"
@@ -81,7 +92,7 @@ function FormLog({ setIsLogin, isLogin }: FormLogProps) {
               className={styles.btn_change_form}
               onClick={() => setIsLogin(!isLogin)}
             >
-              Não tem uma conta? Cadastre-se
+              Tem uma conta? Entre agora
             </button>
           </div>
         </div>
@@ -90,4 +101,4 @@ function FormLog({ setIsLogin, isLogin }: FormLogProps) {
   );
 }
 
-export default FormLog;
+export default FormCreate;
