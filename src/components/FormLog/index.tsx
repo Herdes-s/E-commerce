@@ -8,6 +8,7 @@ import {
   type Dispatch,
   type SetStateAction,
 } from "react";
+import { IoChevronBack } from "react-icons/io5";
 
 type FormLogProps = {
   setIsLogin: Dispatch<SetStateAction<boolean>>;
@@ -37,9 +38,14 @@ function FormLog({ setIsLogin, isLogin }: FormLogProps) {
           <h1 onClick={() => navigate("/")}>E-commerce</h1>
         </div>
       </header>
+      <div className={styles.back}>
+          <button onClick={() => navigate(-1)}>
+            <IoChevronBack /> Voltar
+          </button>
+        </div>
       <section className={styles.form_log}>
         <div className={styles.form_log_container}>
-          <h2>Log-In</h2>
+          <h2>Entrar</h2>
           <form onSubmit={handleSubmit}>
             <input
               className={styles.email_input}
@@ -85,6 +91,7 @@ function FormLog({ setIsLogin, isLogin }: FormLogProps) {
             </button>
           </div>
         </div>
+        <div></div>
       </section>
     </>
   );

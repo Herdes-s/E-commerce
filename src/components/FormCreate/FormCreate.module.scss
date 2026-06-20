@@ -7,9 +7,8 @@
   width: 100%;
   background-color: $primary-color;
   padding: 1rem;
-  color: $white;
-  text-align: center;
   border-bottom: 2px solid darken($white, 10%);
+  box-shadow: 0 0px 6px rgba(255, 255, 255, 0.5);
 
   .header_container {
     max-width: 1300px;
@@ -19,28 +18,62 @@
     align-items: center;
 
     h1 {
+      color: $white;
       font-size: 2rem;
       margin: 0;
+      cursor: pointer;
+    }
+  }
+}
+
+.back {
+  position: absolute;
+  top: 100px;
+  left: 12px;
+  width: min(1200px, 100%);
+  margin: auto;
+  
+  button {
+    color: $primary-color;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    font-weight: bold;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 }
 
 .form_log {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
   height: 100dvh;
   background-color: $primary-color;
 
   .form_log_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     max-width: 1300px;
-    margin: auto;
     background-color: $white;
+    padding: 8rem;
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    box-shadow: 0 0px 6px rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 100%;
+
+    @media (min-width: 1000px) {
+      padding: 8rem;
+      width: 50%;
+    }
 
     h2 {
       margin-bottom: 1.5rem;
