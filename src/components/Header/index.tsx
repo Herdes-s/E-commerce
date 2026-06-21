@@ -9,6 +9,8 @@ import { IoSearch } from "react-icons/io5";
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useCartStore } from "../../stores/cartStore";
+import { useAuthStore } from "../../stores/useAuthStore";
+import { CiLogin } from "react-icons/ci";
 
 interface SearchBarProps {
   onSearch?: (searchTerm: string) => void;
@@ -18,6 +20,9 @@ interface SearchBarProps {
 function Header({ onSearch, onSelect }: SearchBarProps) {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+
+  const user = useAuthStore((state) => state.user);
+  const logout = useAuthStore((state) => state.logout);
 
   const queryParam = searchParams.get("search") || "";
   const categoryParam = searchParams.get("category") || "all";
@@ -82,9 +87,28 @@ function Header({ onSearch, onSelect }: SearchBarProps) {
             </a>
           </div>
 
-          <button className={styles.login} onClick={() => navigate("/login")}>
-            Cadastre-se / Entre
-          </button>
+          <div className={styles.container_login}>
+            {user ? (
+              <div className={styles.login}>
+                <p className={styles.name}>{user.name}</p>
+                <button
+                  type="button"
+                  className={styles.btn_logout}
+                  onClick={logout}
+                >
+                  <CiLogin />
+                </button>
+              </div>
+            ) : (
+              <button
+                type="button"
+                className={styles.btn_login}
+                onClick={() => navigate("/login")}
+              >
+                Cadastre-se / Entre
+              </button>
+            )}
+          </div>
         </div>
         <div className={styles.row_two}>
           <h1 className={styles.logo} onClick={() => navigate("/")}>

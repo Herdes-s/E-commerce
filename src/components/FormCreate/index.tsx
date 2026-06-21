@@ -9,6 +9,7 @@ import {
   type SetStateAction,
 } from "react";
 import { IoChevronBack } from "react-icons/io5";
+import { useAuthStore } from "../../stores/useAuthStore";
 
 type FormLogProps = {
   setIsLogin: Dispatch<SetStateAction<boolean>>;
@@ -29,8 +30,12 @@ function FormCreate({ setIsLogin, isLogin }: FormLogProps) {
     if (name === "password") setPassword(value);
   }
 
+  const { createAccount } = useAuthStore()
+
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
+
+    createAccount({ name, email, password })
   }
 
   return (
@@ -89,7 +94,7 @@ function FormCreate({ setIsLogin, isLogin }: FormLogProps) {
                 )}
               </button>
             </div>
-            <button className={styles.btn_enter} type="submit">
+            <button className={styles.btn_enter} onClick={() => navigate("/")} type="submit">
               Entrar
             </button>
           </form>

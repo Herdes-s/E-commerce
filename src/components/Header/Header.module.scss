@@ -49,17 +49,38 @@
         }
       }
 
-      .login {
-        background: transparent;
-        border: none;
+      .container_login {
         color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
+        padding: 0.5rem 0;
         cursor: pointer;
-        transition: all 0.3s ease;
+        
+        .login {
+          display: flex;
+          flex-direction: row;
+          gap: 0.5rem;
+          font-size: 1rem;
+          font-weight: bold;
+          cursor: pointer;
+          align-items: center;
 
-        &:hover {
-          transform: scale(1.05);
+          .btn_logout {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 1rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+          }
+        }
+        
+        .btn_login {
+          color: white;
+          font-size: 1rem;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+
         }
       }
     }

@@ -6,7 +6,7 @@ function Login() {
   const [isLogin, setIsLogin] = useState<boolean>(false);
   return (
     <div>
-      {isLogin ? (
+      {!isLogin ? (
         <FormLog setIsLogin={setIsLogin} isLogin={isLogin} />
       ) : (
         <FormCreate setIsLogin={setIsLogin} isLogin={isLogin} />
